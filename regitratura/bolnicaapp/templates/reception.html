@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% load static %}
+<title>
+    {% block title %}
+      {{ block.super }},{{doctor.name|safe}}, запись на прием
+    {% endblock %}
+  </title>
+
+{% block content %}
+    <h3>{{doctor.name|safe}}</h3>
+    <p>{{doctor.specialization|safe}}</p>
+    <p>{{doctor.info|safe}}</p>
+
+    {% if norm %}
+      <div align="center">
+        <h3>{{norm}}<br>
+            на {{curr_date}} {{curr_time}}
+        </h3>
+      </div>
+    {%endif%}
+
+      {%if message %}
+        <div align="center">
+          <h3>{{message}}</h3>
+        </div>
+      {%endif%}
+
+    <br><br>
+
+    <div align="center">
+         <div class="panel panel-success">
+  <div class="panel-heading">
+    <h2 class="panel-title">Форма записи</h2>
+  </div>
+  <div class="panel-body">
+<div class="well well-lg">
+    <h3></h3>
+      <form action="" class="form-inline" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group" align="left">
+          <table class="table table-borderless">
+            <tr>
+            <label align="left" for="inputDate">Выберите дату:   </label>
+            <input align="left" type="date" name="date" required id="id_date" class="form-control" value="">
+
+              <br><br></tr>
+
+            <tr><td>
+                <div class="form-group">
+            <label for="inputTime">Выберите время:</label>
+                 <td><input type="text" name="time" required class="form-control" id="id_time" list="time" >
+                    <datalist id="time">
+                      <option value=08:00:00>
+                        <option value=09:00:00>
+                        <option value=10:00:00>
+                        <option value=11:00:00>
+                        <option value=12:00:00>
+                        <option value=13:00:00>
+                        <option value=14:00:00>
+                        <option value=15:00:00>
+                        <option value=16:00:00>
+                        <option value=17:00:00>
+                    </datalist>
+                <br><br></td></tr>
+
+
+
+            <tr><th> {{form.patient_name.label}}</th><td>{{form.patient_name}}{{form.patient_name.errors}}<br><br></td></tr>
+            <tr><th>{{form.patient_info.label}}</th><td>{{form.patient_info}}{{form.patient_info.errors}}<br><br></td></tr>
+          </table>
+
+            <div style="padding-left:20%;"><button id="submit" class="btn btn-success">Запись</button></div>
+
+
+      </form>
+    </div>
+      </div>
+</div>
+</div>
+
+  {% endblock content %}
+
+
+

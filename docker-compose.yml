@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web:
+    build: ./regitratura
+    command: python ./manage.py runserver 0.0.0.0:8000
+    ports:
+    - 8000:8000
+    volumes:
+    - ./regitratura:/data
+    depends_on:
+    - db
+    environment:
+     DATABASE_URL: postgres://postgres@db/postgres
+
+  db:
+    image: postgres:9.6
+

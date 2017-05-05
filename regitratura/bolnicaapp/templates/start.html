@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+
+  <title>
+    {% block title %}
+      {{ block.super }},{{doctor.name|safe}}
+    {% endblock %}
+  </title>
+
+  {% block content %}
+      <div class="jumbotron">
+        <p class="lead">
+         Институт неотложной и восстановительной хирургии им. В.К.Гусака. Расположена по адресу:
+            Донецк, Ленинский проспект,47.
+
+        </p>
+        <p>Время работы поликлиники: пн - пт с 9:00 до 18:00.</p>
+      </div>
+        <div class="container">
+      <div align="left">
+          <h2>Наши врачи:</h2> </div>
+        </div>
+      <div class="row marketing">
+
+        {% for doctor in doctors %}
+          <div class="col-lg-6">
+            {%if forloop.counter0|divisibleby:"2" == True %}
+                  <h4>{{doctor.name|safe}}</h4>
+                  <p>{{doctor.specialization|safe}}</p>
+                  <p>{{doctor.info|safe}}</p>
+                  <p> <a  class="btn btn-primary"
+                       href="{% url 'reception' doctor_id=doctor.id %}">Записаться на прием</a>
+                  </p>
+            {% endif %}
+          </div>
+
+          <div class="col-lg-6">
+            {%if forloop.counter0|divisibleby:"2" == False %}
+                  <h4>{{doctor.name|safe}}</h4>
+                  <p>{{doctor.specialization|safe}}</p>
+                  <p>{{doctor.info|safe}}</p>
+                  <p> <a class="btn btn-primary"
+                       href="{% url 'reception' doctor_id=doctor.id %}">Записаться на прием</a>
+                  </p>
+            {% endif %}
+          </div>
+
+
+            {% comment %}
+          <div class="col-lg-6">
+
+                  <h4>{{doctor.name|safe}}</h4>
+                  <p>{{doctor.specialization|safe}}</p>
+                  <p>{{doctor.info|safe}}</p>
+                  <p> <a class="btn btn-primary"
+                       href="{% url 'reception' doctor_id=doctor.id %}">Записаться на прием</a>
+                  </p>
+          </div>
+            {% endif %}
+
+      {% endcomment %}
+        {% endfor %}
+      </div>
+  {% endblock content %}

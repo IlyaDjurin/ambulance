@@ -1,0 +1,42 @@
+
+h1 a {
+        color: #FCA205;
+        font-family: 'Lobster';
+    }
+
+
+body {
+  padding-top: 20px;
+}
+
+.btn-primary{
+	border-color: #778899;
+	background-color: #551A8B;
+}
+
+.navbar-inverse{
+	background-color: #551A8B;
+	border-color: #778899;
+}
+
+.carousel-inner{
+	height: 350px;
+}
+
+.img-thumbnail{
+	height: 250px;
+	width:250px;
+}
+.pull-left{
+	padding:10px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.img-poisk{
+    border: 1px ;
+    width: 26px;
+    height: 26px;
+}
+
