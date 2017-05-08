@@ -50,10 +50,5 @@ class ViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_call_view_admin(self):
-
-        response = self.client.get('/http://127.0.0.1:8000/admin/')
-
-        self.assertEqual(response.status_code, 200)
 
 
